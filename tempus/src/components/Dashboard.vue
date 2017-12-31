@@ -8,10 +8,8 @@
       <div class="chip">#{{task.task_id}}</div>
       {{task.name}}
 
-      <div class="secondary-content">
-        <li class = "secondary-content"><a class="waves-effect waves-circle waves-light btn-floating">
-    <i class="material-icons">keyboard_arrow_right</i></a></li>
-      </div>
+      <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
+      <i class="fa fa-eye"></i></router-link>
 
     </li>
   </ul>
@@ -24,7 +22,11 @@
       <!-- add when there is ability to add projects
     <li><a class="btn-floating blue"><i class="material-icons">add_to_photos</i></a></li>
     -->
-      <li><a class="btn-floating blue"><i class="material-icons">add_box</i></a></li>
+      <li>
+        <router-link to="/new" class="btn-floating btn-large blue">
+          <i class="fa fa-plus"></i>
+        </router-link>
+      </li>
     </ul>
   </div>
 </div>
