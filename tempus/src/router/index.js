@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
+import NewTask from '@/components/NewTask'
 
 Vue.use(Router)
 
@@ -10,6 +11,11 @@ export default new Router({
       path: '/',
       name: 'dashboard',
       component: Dashboard
+    },
+    {
+      path: '/new',
+      name: 'newtask',
+      component: NewTask
     }
   ]
 })
