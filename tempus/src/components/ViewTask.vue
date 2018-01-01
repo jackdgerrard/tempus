@@ -13,6 +13,12 @@
     <router-link to="/" class="btn grey">Back </router-link>
     <button @click="deleteTask" class="btn red">Delete</button>
   </ul>
+
+  <div class="fixed-action-btn">
+    <router-link v-bind:to="{name: 'edittask', params: {task_id: task_id}}" class="btn-floating btn-large blue">
+      <i class="fa fa-pencil"></i>
+    </router-link>
+  </div>
 </div>
 </template>
 
@@ -36,13 +42,13 @@ export default {
     db.collection('Tasks').where('task_id', '==', to.params.task_id).get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         next(vm => {
-            vm.task_id= doc.data().task_id,
-            vm.name= doc.data().name,
-            vm.desc= doc.data().desc,
-            vm.completed= doc.data().completed,
-            vm.assignee= doc.data().assignee,
-            vm.date= doc.data().date,
-            vm.type= doc.data().type
+          vm.task_id = doc.data().task_id,
+            vm.name = doc.data().name,
+            vm.desc = doc.data().desc,
+            vm.completed = doc.data().completed,
+            vm.assignee = doc.data().assignee,
+            vm.date = doc.data().date,
+            vm.type = doc.data().type
         })
       })
     })
@@ -54,13 +60,13 @@ export default {
     fetchData() {
       db.collection('Tasks').where('task_id', '==', this.$route.params.task_id).get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.task_id= doc.id,
-            this.name= doc.data().name,
-            this.desc= doc.data().desc,
-            this.completed= doc.data().completed,
-            this.assignee= doc.data().assignee,
-            this.date= doc.data().date,
-            this.type= doc.data().type
+          this.task_id = doc.id,
+            this.name = doc.data().name,
+            this.desc = doc.data().desc,
+            this.completed = doc.data().completed,
+            this.assignee = doc.data().assignee,
+            this.date = doc.data().date,
+            this.type = doc.data().type
         })
       })
     },
