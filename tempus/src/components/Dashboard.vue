@@ -9,7 +9,7 @@
       {{task.name}}
 
       <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
-      <i class="fa fa-eye"></i></router-link>
+      <i class="fa fa-arrow-right"></i></router-link>
 
     </li>
   </ul>
