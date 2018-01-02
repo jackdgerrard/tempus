@@ -1,10 +1,8 @@
 <template>
-<div id="loginScreen">
-  <p>Login: rokas.mikalauskas95@gmail.com </br> Password: root123 </br>
-  </p>
+<div id="registerScreen">
   <div class="container">
-    <h2> Login </h2>
-    <form @submit.prevent="login" class="col s12">
+    <h2> Register </h2>
+    <form @submit.prevent="register" class="col s12">
       <div class="row">
         <div class="input-field col s12">
           <input type="email" v-model="email" required>
@@ -17,8 +15,7 @@
           <label>Password</label>
         </div>
       </div>
-      <router-link to="/register" class="btn red"> Register </router-link>
-      <button type="submit" class="btn blue">Login</button>
+      <button type="submit" class="btn red">Register</button>
     </form>
   </div>
 </div>
@@ -26,7 +23,7 @@
 <script>
 import firebase from 'firebase'
 export default {
-  name: 'loginScreen',
+  name: 'registerScreen',
   data() {
     return {
       email: null,
@@ -34,8 +31,8 @@ export default {
     }
   },
   methods: {
-    login() {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.pass).then(
+    register() {
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.pass).then(
         user => {
           this.$router.push('/')
         },
