@@ -4,14 +4,21 @@ import Dashboard from '@/components/Dashboard'
 import NewTask from '@/components/NewTask'
 import ViewTask from '@/components/ViewTask'
 import EditTask from '@/components/EditTask'
+import LoginScreen from '@/components/LoginScreen'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: 'dashboard',
       component: Dashboard
+    },
+    {
+      path: '/login',
+      name: 'loginScreen',
+      component: LoginScreen
     },
     {
       path: '/new',

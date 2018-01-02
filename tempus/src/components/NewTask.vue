@@ -1,7 +1,7 @@
 <template>
 <div id="newTask">
-  <h3>Add new Task</h3>
-  <div class="row">
+  <div class="container">
+    <h3>Add new Task</h3>
     <form @submit.prevent="creatTask" class="col s12">
       <div class="row">
         <div class="input-field col s12">

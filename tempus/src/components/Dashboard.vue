@@ -7,10 +7,9 @@
     <li v-for="task in tasks" v-bind:key="task.id" class="collection-item">
       <div class="chip">#{{task.task_id}}</div>
       {{task.name}}
-
       <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
-      <i class="fa fa-arrow-right"></i></router-link>
-
+        <i class="fa fa-arrow-right"></i>
+      </router-link>
     </li>
   </ul>
 

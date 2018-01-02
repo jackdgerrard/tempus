@@ -42,7 +42,7 @@
 <script>
 import db from './firebaseInit'
 export default {
-  name: 'newTask',
+  name: 'editTask',
   data() {
     return {
       task_id: null,
