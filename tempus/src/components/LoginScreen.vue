@@ -1,14 +1,14 @@
 <template>
 <div id="loginScreen">
-  <p>Login: root </br> Password: root </br>
+  <p>Login: rokas.mikalauskas95@gmail.com </br> Password: root123 </br>
   </p>
   <div class="container">
     <h2> Login </h2>
     <form @submit.prevent="login" class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="user" required>
-          <label>Username</label>
+          <input type="email" v-model="email" required>
+          <label>Email</label>
         </div>
       </div>
       <div class="row">
@@ -22,32 +22,26 @@
   </div>
 </div>
 </template>
-
 <script>
-import db from './firebaseInit'
+import firebase from 'firebase'
 export default {
   name: 'loginScreen',
   data() {
     return {
-      user: null,
-      pass: null,
-      password: null
+      email: null,
+      pass: null
     }
   },
   methods: {
     login() {
-      db.collection('users').where('username', '==', this.user).get().then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          this.password = doc.data().password
-        })
-      })
-      if (this.pass == this.password){
-        console.log(this.password)
-        this.$router.push('/')}
-      else{
-        console.log(this.password)
-        Materialize.toast('Incorrect Details!', 2000)
-      }
+      firebase.auth().signInWithEmailAndPassword(this.email, this.pass).then(
+        user => {
+          this.$router.push('/')
+        },
+        err => {
+          Materialize.toast(err.message, 2000)
+        }
+      )
     }
   }
 }
