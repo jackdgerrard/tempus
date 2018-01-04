@@ -6,11 +6,14 @@ $white: #f4e5cd
 $red: #9e0031
 $blue: #40798c
 
-*
-    font-family: 'Open Sans', sans-serif
+$pacifico: 'Pacifico', cursive
 
-h1,  nav a
-    font-family: 'Pacifico', cursive
+@mixin background()
+    background-color: $white
+    background-image: url("https://www.transparenttextures.com/patterns/lined-paper.png")
+
+h1
+    font-family: $pacifico
 
 .nav-wrapper
     background-color: $red
@@ -24,4 +27,6 @@ nav
 #mobile-demo
     img
         border-radius: 16px;
-        margin: 16 4 4 4 
+
+html
+    +background

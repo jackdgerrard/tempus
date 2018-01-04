@@ -2,7 +2,7 @@
 <nav>
   <div class="nav-wrapper">
     <div class="container">
-      <router-link to="/" class="brand-logo">Tempus</router-link>
+      <h1><router-link to="/" class="brand-logo">Tempus</router-link></h1>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li>

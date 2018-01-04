@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans|Pacifico");
-* {
-  font-family: 'Open Sans', sans-serif; }
-
-h1, nav a {
-  font-family: 'Pacifico', cursive; }
+h1 {
+  font-family: "Pacifico", cursive; }
 
 .nav-wrapper {
   background-color: #9e0031; }
@@ -15,5 +12,8 @@ nav {
   background: #f4e5cd; }
 
 #mobile-demo img {
-  border-radius: 16px;
-  margin: 16 4 4 4; }
+  border-radius: 16px; }
+
+html {
+  background-color: #f4e5cd;
+  background-image: url("https://www.transparenttextures.com/patterns/lined-paper.png"); }
