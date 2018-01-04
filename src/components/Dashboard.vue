@@ -1,5 +1,6 @@
 <template>
 <div id="dashboard">
+  <button v-on:click="logout">logout</button>
   <ul class="collection with-header">
     <li class="collection-header">
       <h5>Tasks</h5>
@@ -33,6 +34,7 @@
 
 <script>
 import db from './firebaseInit'
+import firebase from 'firebase'
 export default {
   name: 'dashboard',
   data() {
@@ -56,6 +58,14 @@ export default {
         this.tasks.push(data)
       })
     })
+  },
+  methods: {
+    logout: () => {
+      firebase.auth().signOut().then(
+        () => {
+          this.$router.push('/login')
+      })
+    }
   }
 }
 </script>
