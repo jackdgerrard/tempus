@@ -1,6 +1,6 @@
 <template>
 <nav>
-  <div class="nav-wrapper green">
+  <div class="nav-wrapper">
     <div class="container">
       <router-link to="/" class="brand-logo">Tempus</router-link>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>

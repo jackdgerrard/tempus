@@ -1,1 +1,19 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Pacifico");*{font-family:'Open Sans', sans-serif}h1,nav a{font-family:'Pacifico', cursive}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Pacifico");
+* {
+  font-family: 'Open Sans', sans-serif; }
+
+h1, nav a {
+  font-family: 'Pacifico', cursive; }
+
+.nav-wrapper {
+  background-color: #9e0031; }
+
+nav {
+  color: #f4e5cd; }
+
+#app {
+  background: #f4e5cd; }
+
+#mobile-demo img {
+  border-radius: 16px;
+  margin: 16 4 4 4; }
