@@ -60,7 +60,7 @@ export default {
     fetchData() {
       db.collection('Tasks').where('task_id', '==', this.$route.params.task_id).get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          this.task_id = doc.id,
+            this.task_id = doc.id,
             this.name = doc.data().name,
             this.desc = doc.data().desc,
             this.completed = doc.data().completed,
