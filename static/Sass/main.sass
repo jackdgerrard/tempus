@@ -1,19 +1,33 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico');
+//imports
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico')
+
+
+//sass variables
 
 $grey: #3a2e39
 $green: #1e555c
 $white: #f4e5cd
 $red: #9e0031
 $blue: #40798c
-
 $pacifico: 'Pacifico', cursive
+$Sans-serif: 'Open Sans', sans-serif;
 
-@mixin background()
-    background-color: #40798c
-    background-image: url("https://www.transparenttextures.com/patterns/lined-paper.png")
+
+@mixin paper()
+    background-color: $white
+    background-image: url("../images/background/paper.png")
+
+*
+    font-family: $Sans-serif
 
 h1
     font-family: $pacifico
+
+.blue
+    background-color: $blue
+
+.red
+    background-color: $red
 
 .nav-wrapper
     background-color: $red
@@ -28,5 +42,5 @@ nav
     img
         border-radius: 16px;
 
-#dashboard
-    +background
+#app, collection
+    +paper
