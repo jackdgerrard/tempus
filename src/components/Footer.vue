@@ -1,4 +1,4 @@
-
+<template>
 <footer class="page-footer">
     <div class="container">
         <div class="row">
@@ -24,3 +24,9 @@
             </div>
           </div>
 </footer>
+</template>
+<script>
+export default {
+  name: 'footer'
+}
+</script>
