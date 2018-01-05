@@ -3,8 +3,7 @@
   <div class="nav-wrapper">
     <div class="container">
       <h1><router-link to="/" class="brand-logo">Tempus</router-link></h1>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
+      <ul class="right">
         <li>
           <router-link to="/login">Login</router-link>
         </li>
@@ -37,9 +36,6 @@
 </template>
 
 <script>
-$(document).ready(() => {
-  $(".button-collapse").sideNav()
-})
 import router from '@/router'
 import db from './firebaseInit'
 import firebase from 'firebase'
