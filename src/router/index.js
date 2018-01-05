@@ -9,11 +9,8 @@ import RegisterScreen from '@/components/RegisterScreen'
 import firebase from 'firebase'
 Vue.use(Router)
 let router = new Router({
-  mode: 'history',
-  routes: [{
-      path: '*',
-      redirect: '/login'
-    },
+  //mode: 'history',
+  routes: [
     {
       path: '/',
       name: 'dashboard',
@@ -69,7 +66,6 @@ let router = new Router({
 router.beforeEach((to, from, next) => {
   let user = firebase.auth().currentUser
   let auth = to.matched.some(record => record.meta.auth)
-  console.log(firebase.auth().currentUser)
   if (auth && !user) next('/login')
   else if (!auth && user) next('/')
   else next()
