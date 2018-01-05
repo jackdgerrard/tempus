@@ -11,11 +11,14 @@
         <li>
           <router-link to="/register">Register</router-link>
         </li>
+        <li>
+         <router-link to="/login" v-on:click.native="logout">Logout</router-link>
+        </li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <div class="row">
           <div class="col s4">
-          <img src="http://via.placeholder.com/100x100" class="">
+            <img src="http://via.placeholder.com/100x100" class="">
           </div>
           <div class="col s8">
             <a class="waves-effect waves-light btn blue">user</a>
@@ -34,9 +37,22 @@
 </template>
 
 <script>
-
-
 $(document).ready(() => {
   $(".button-collapse").sideNav()
 })
+import router from '@/router'
+import db from './firebaseInit'
+import firebase from 'firebase'
+
+export default {
+  name: 'navbar',
+  methods: {
+    logout: function() {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('login')
+      })
+    }
+    }
+  }
+
 </script>
