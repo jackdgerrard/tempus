@@ -25,6 +25,7 @@
 </template>
 <script>
 import firebase from 'firebase'
+import Vuex from 'vuex'
 export default {
   name: 'loginScreen',
   data() {
@@ -37,6 +38,7 @@ export default {
     login() {
       firebase.auth().signInWithEmailAndPassword(this.email, this.pass).then(
         user => {
+          this.$store.state.authorized = true
           this.$router.push('/')
         },
         err => {
