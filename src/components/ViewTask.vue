@@ -2,7 +2,7 @@
 <div id="viewtask">
   <ul class="collection with-header">
     <li class="collection-header">
-      <h4> {{name}}</h4></li>
+      <h4>{{name}}</h4></li>
     <li class="collection-item"> Date created: {{date}}</li>
     <li class="collection-item"> Type: {{type}}</li>
     <li class="collection-item"> Completed: {{completed}}</li>

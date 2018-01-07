@@ -10604,4 +10604,9 @@ footer {
   bottom: 0;
 }
 
+/* line 52, C:/Users/JackG/Desktop/tempus/static/Sass/materialize/sass/materialize.scss */
+#dashboard {
+  min-height: 100vh;
+}
+
 /*# sourceMappingURL=../../../CSS/materialize/sass/materialize.map */
