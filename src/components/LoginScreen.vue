@@ -17,8 +17,8 @@
           <label>Password</label>
         </div>
       </div>
-      <button type="submit" class="btn blue">Login</button>
-      <router-link to="/register" class="btn red"> Register </router-link>
+      <button type="submit" class="btn">Login</button>
+      <router-link to="/register" class="btn"> Register </router-link>
     </form>
   </div>
 </div>
