@@ -14,7 +14,7 @@
   </ul>
 
   <div class="fixed-action-btn vertical click-to-toggle">
-    <a class="btn-floating btn-large red">
+    <a class="btn-floating btn-large ">
       <i class="material-icons">library_add</i>
     </a>
     <ul>
@@ -22,7 +22,7 @@
     <li><a class="btn-floating blue"><i class="material-icons">add_to_photos</i></a></li>
     -->
       <li>
-        <router-link to="/new" class="btn-floating btn-large blue">
+        <router-link to="/new" class="btn-floating btn-large">
           <i class="fa fa-plus"></i>
         </router-link>
       </li>

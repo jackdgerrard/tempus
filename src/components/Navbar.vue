@@ -1,5 +1,5 @@
 <template>
-<nav>
+<nav z-depth-4>
   <div class="nav-wrapper">
     <div class="container">
       <h1><router-link to="/" class="brand-logo">Tempus</router-link></h1>
