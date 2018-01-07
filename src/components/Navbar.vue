@@ -1,42 +1,31 @@
 <template>
-<nav>
-  <div class="nav-wrapper green">
-    <div class="container">
+  <nav class="nav-wrapper z-depth-4">
       <router-link to="/" class="brand-logo">Tempus</router-link>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
-        <li>
-          <router-link to="/login">Login</router-link>
-        </li>
-        <li>
-          <router-link to="/register">Register</router-link>
-        </li>
-      </ul>
-      <ul class="side-nav" id="mobile-demo">
-        <div class="row">
-          <div class="col s4">
-          <img src="http://via.placeholder.com/100x100" class="">
-          </div>
-          <div class="col s8">
-            <a class="waves-effect waves-light btn blue">user</a>
-          </div>
-        </div>
-        <li>
-          <router-link to="/login">Login</router-link>
-        </li>
-        <li>
-          <router-link to="/register">Register</router-link>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <ul id="nav-mobile" class="right ">
+      <li>
+        <router-link to="/login">Login</router-link>
+      </li>
+      <li>
+        <router-link to="/register">Register</router-link>
+      </li>
+      <li>
+        <router-link to="/" v-on:click.native="logout">Logout</router-link>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
-
-
-$(document).ready(() => {
-  $(".button-collapse").sideNav()
-})
+  import db from './firebaseInit'
+  import firebase from 'firebase'
+  export default {
+    name: 'navbar',
+    methods: {
+      logout: function () {
+        firebase.auth().signOut().then(() => {
+          this.$router.replace('login')
+        })
+      }
+    }
+  }
 </script>

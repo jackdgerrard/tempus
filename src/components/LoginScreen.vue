@@ -3,7 +3,7 @@
   <p>Login: rokas.mikalauskas95@gmail.com </br> Password: root123 </br>
   </p>
   <div class="container">
-    <h2> Login </h2>
+    <h2> Log in </h2>
     <form @submit.prevent="login" class="col s12">
       <div class="row">
         <div class="input-field col s12">
@@ -17,8 +17,8 @@
           <label>Password</label>
         </div>
       </div>
-      <button type="submit" class="btn blue">Login</button>
-      <router-link to="/register" class="btn red"> Register </router-link>
+      <button type="submit" class="btn">Login</button>
+      <router-link to="/register" class="btn"> Register </router-link>
     </form>
   </div>
 </div>
