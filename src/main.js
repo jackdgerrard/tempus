@@ -4,16 +4,27 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import firebase from 'firebase'
+import Vuex from 'vuex'
 
 Vue.config.productionTip = false
+Vue.use(Vuex)
+const store = new Vuex.Store({
+  state: {
+    authorized: false
+  }
+})
+
 let app
 firebase.auth().onAuthStateChanged((user) => {
   if (!app) {
     app = new Vue({
       el: '#app',
       router,
+      store,
       template: '<App/>',
-      components: { App }
+      components: {
+        App
+      }
     })
   }
 })
