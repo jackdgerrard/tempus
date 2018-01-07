@@ -1,5 +1,5 @@
 <template>
-  <div id="dashboard">
+  <div id="dashboard page-footer z-depth-4">
     <ul class="collection with-header">
       <li class="collection-header">
         <h5>Tasks</h5>

@@ -42,13 +42,8 @@
 @import "components/date_picker/default.date";
 @import "components/date_picker/default.time";
 
+//custom css here
 
-//custom
-
-footer{
-    bottom:0;
-}
-
-#dashboard{
+#dashboard,#loginScreen,#registerScreen,#viewtask{
     min-height: 100vh;
 }

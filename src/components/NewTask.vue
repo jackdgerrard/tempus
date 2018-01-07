@@ -1,5 +1,5 @@
 <template>
-<div id="newTask">
+<div id="newTask" class="page-footer z-depth-4">
   <div class="container">
     <h3>Add new Task</h3>
     <form @submit.prevent="creatTask" class="col s12">

@@ -10599,13 +10599,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   /*shape-rendering: crispEdges;*/
 }
 
-/* line 48, C:/Users/JackG/Desktop/tempus/static/Sass/materialize/sass/materialize.scss */
-footer {
-  bottom: 0;
-}
-
-/* line 52, C:/Users/JackG/Desktop/tempus/static/Sass/materialize/sass/materialize.scss */
-#dashboard {
+/* line 47, C:/Users/JackG/Desktop/tempus/static/Sass/materialize/sass/materialize.scss */
+#dashboard, #loginScreen, #registerScreen, #viewtask {
   min-height: 100vh;
 }
 
