@@ -1,8 +1,8 @@
 <template>
 <div id="newproject" class="page-footer z-depth-4">
   <div class="container">
-    <h3>Add new Task</h3>
-    <form @submit.prevent="creatTask" class="col s12">
+    <h3>Add new Project</h3>
+    <form @submit.prevent="createProject" class="col s12">
       <div class="row">
         <div class="input-field col s12">
           <input type="text" v-model="project_id" required>
@@ -35,7 +35,7 @@ export default {
     }
   },
   methods: {
-    creatTask() {
+    createProject() {
       db.collection('projects').add({
         project_id: this.project_id,
         name: this.name,

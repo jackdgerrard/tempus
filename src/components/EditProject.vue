@@ -1,6 +1,6 @@
 <template>
 <div id="editproject page-footer z-depth-4">
-  <h3>Add new Task</h3>
+  <h3>Edit Project Details</h3>
   <div class="row">
     <form @submit.prevent="updateProject" class="col s12">
       <div class="row">
@@ -13,9 +13,7 @@
           <input type="text" v-model="name" required>
         </div>
       </div>
-
-
-
+      
       <button type="submit" class="btn">Submit</button>
       <router-link to="/" class="btn grey"> Cancel </router-link>
     </form>
@@ -59,15 +57,15 @@ export default {
         })
       })
     },
-    updateTask() {
+    updateProject() {
       db.collection('projects').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 doc.ref.update({
-                  project_id: this.task_id,
+                  project_id: this.project_id,
                   name: this.name,
                   date: this.date
                 }).then(() =>{
-                  this.$router.push({name: 'projecttasks', params: {task_id: this.project_id}})
+                  this.$router.push({name: 'projecttasks', params: {project_id: this.project_id}})
           })
         })
       })

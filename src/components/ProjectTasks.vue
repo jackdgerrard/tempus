@@ -14,6 +14,9 @@
   </ul>
   <router-link to="/" class="btn grey">Back </router-link>
   <button @click="deleteProject" class="btn red">Delete Project</button>
+  <router-link v-bind:to="{name: 'editproject', params: {project_id: this.$route.params.project_id}}">
+    <button class="btn blue"> Edit Project </button>
+  </router-link>
   <div class="fixed-action-btn">
     <router-link to="/new" class="btn-floating btn-large waves-effect waves-light">
       <i class="material-icons">add</i>
@@ -36,14 +39,14 @@ export default {
     db.collection('Tasks').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         const data = {
-          'id' : doc.id,
-          'task_id' : doc.data().task_id,
-          'name' : doc.data().name,
-          'desc' : doc.data().desc,
-          'completed' : doc.data().completed,
-          'assignee' : doc.data().assignee,
-          'date' : doc.data().date,
-          'type' : doc.data().type
+          'id': doc.id,
+          'task_id': doc.data().task_id,
+          'name': doc.data().name,
+          'desc': doc.data().desc,
+          'completed': doc.data().completed,
+          'assignee': doc.data().assignee,
+          'date': doc.data().date,
+          'type': doc.data().type
         }
         this.tasks.push(data)
       })
