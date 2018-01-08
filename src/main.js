@@ -8,6 +8,7 @@ import Vuex from 'vuex'
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
+
 const store = new Vuex.Store({
   state: {
     authorized: false
@@ -16,6 +17,12 @@ const store = new Vuex.Store({
 
 let app
 firebase.auth().onAuthStateChanged((user) => {
+    if (firebase.auth().currentUser) {
+      store.state.authorized = true
+    }
+    else {
+      store.state.authorized = false
+    }
   if (!app) {
     app = new Vue({
       el: '#app',
