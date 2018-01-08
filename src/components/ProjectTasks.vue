@@ -54,8 +54,14 @@ export default {
   },
   methods: {
     deleteProject() {
+      //deletes all projects, and tasks associated with them
       db.collection('projects').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
+          db.collection('Tasks').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+              doc.ref.delete()
+            })
+          })
           doc.ref.delete()
           this.$router.push('/')
         })

@@ -24,6 +24,7 @@
 
 
 <script>
+import moment from 'moment'
 import db from './firebaseInit'
 export default {
   name: 'newproject',
@@ -39,7 +40,7 @@ export default {
       db.collection('projects').add({
         project_id: this.project_id,
         name: this.name,
-        date: this.date,
+        date: moment().unix()
       }).then(docRef => this.$router.push('/'))
     }
   }

@@ -13,7 +13,11 @@
           <input type="text" v-model="name" required>
         </div>
       </div>
-
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" v-model="date" disabled required>
+        </div>
+      </div>
       <button type="submit" class="btn">Submit</button>
       <router-link  :to="{name: 'projecttasks', params:{project_id: this.$route.params.project_id} }" class="btn grey"> Cancel </router-link>
     </form>
@@ -24,6 +28,7 @@
 
 <script>
 import db from './firebaseInit'
+import moment from 'moment'
 export default {
   name: 'editproject',
   data() {
@@ -39,7 +44,7 @@ export default {
         next(vm => {
             vm.project_id = doc.data().project_id,
             vm.name = doc.data().name,
-            vm.date = doc.data().date
+            vm.date = moment.unix(doc.data().date).format("MM/DD/YYYY HH:mm")
         })
       })
     })
@@ -62,8 +67,7 @@ export default {
             querySnapshot.forEach(doc => {
                 doc.ref.update({
                   project_id: this.project_id,
-                  name: this.name,
-                  date: this.date
+                  name: this.name
                 }).then(() =>{
                   this.$router.push({name: 'projecttasks', params: {project_id: this.project_id}})
           })
