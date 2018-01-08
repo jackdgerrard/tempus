@@ -5,6 +5,11 @@
     <form @submit.prevent="creatTask" class="col s12">
       <div class="row">
         <div class="input-field col s12">
+          <input type="text" v-model="project_id" disabled required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
           <input type="text" v-model="task_id" required>
           <label>Task ID#</label>
         </div>
@@ -37,7 +42,7 @@
 
 
       <button type="submit" class="btn">Submit</button>
-      <router-link to="/" class="btn grey"> Cancel </router-link>
+      <router-link  :to="{name: 'projecttasks', params:{project_id: this.$route.params.project_id} }" class="btn grey"> Cancel </router-link>
     </form>
   </div>
 </div>
@@ -56,7 +61,8 @@ export default {
       completed: false,
       assignee: null,
       date: null,
-      type: null
+      type: null,
+      project_id: this.$route.params.project_id
     }
   },
   methods: {
@@ -68,8 +74,9 @@ export default {
         completed: this.completed,
         assignee: this.assignee,
         date: this.date,
-        type: this.type
-      }).then(docRef => this.$router.push('/'))
+        type: this.type,
+        project_id: this.$route.params.project_id
+      }).then(docRef => this.$router.push('/' + this.$route.params.project_id))
     }
   }
 }
