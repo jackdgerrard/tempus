@@ -4,7 +4,8 @@
         <div class="row">
             <div class="col l6 s12">
                 <h5>Tempus</h5>
-                <p>Created by: <br/> <a href="https://github.com/Snowbird4">Rokas</a><br/> and <a href="http://jackdgerrard.github.io">Jack</a>  </p>
+                <p>Created by: <br/> <a href="https://github.com/Snowbird4">
+Rokas Mikalauskas</a><br/> and <a href="http://jackdgerrard.github.io">Jack Gerrard</a>  </p>
             </div>
             <div class="col l4 offset-l2 s12">
                 <h5 class="white-text">Using:</h5>
