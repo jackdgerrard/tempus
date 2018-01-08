@@ -10,12 +10,12 @@
     <li class="collection-item"> Assigned: {{assignee}}</li>
     <li class="collection-item"> Task ID: {{task_id}}</li>
 
-    <router-link to="/" class="btn grey">Back </router-link>
+    <router-link :to="{name: 'projecttasks', params:{project_id: this.$route.params.project_id} }" class="btn grey">Back </router-link>
     <button @click="deleteTask" class="btn red">Delete</button>
   </ul>
 
   <div class="fixed-action-btn">
-    <router-link v-bind:to="{name: 'edittask', params: {task_id: task_id}}" class="btn-floating btn-large blue">
+    <router-link v-bind:to="{name: 'editTask', params: {task_id: this.$route.params.task_id}}" class="btn-floating btn-large blue">
       <i class="fa fa-pencil"></i>
     </router-link>
   </div>

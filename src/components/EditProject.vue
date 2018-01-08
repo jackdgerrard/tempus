@@ -13,9 +13,9 @@
           <input type="text" v-model="name" required>
         </div>
       </div>
-      
+
       <button type="submit" class="btn">Submit</button>
-      <router-link to="/" class="btn grey"> Cancel </router-link>
+      <router-link  :to="{name: 'projecttasks', params:{project_id: this.$route.params.project_id} }" class="btn grey"> Cancel </router-link>
     </form>
   </div>
 </div>
@@ -28,7 +28,7 @@ export default {
   name: 'editproject',
   data() {
     return {
-      priject_id: null,
+      project_id: null,
       name: null,
       date: null,
     }

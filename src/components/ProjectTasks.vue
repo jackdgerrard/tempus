@@ -18,7 +18,7 @@
     <button class="btn blue"> Edit Project </button>
   </router-link>
   <div class="fixed-action-btn">
-    <router-link to="/new" class="btn-floating btn-large waves-effect waves-light">
+    <router-link :to="{name: 'newtask', params:{project_id: this.$route.params.project_id} }" class="btn-floating btn-large waves-effect waves-light">
       <i class="material-icons">add</i>
     </router-link>
   </div>

@@ -79,7 +79,7 @@ let router = new Router({
     },
     {
       path: '/:project_id/edit/:task_id',
-      name: 'edittask',
+      name: 'editTask',
       component: EditTask,
       meta: {
         auth: true
