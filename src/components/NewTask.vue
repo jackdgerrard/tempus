@@ -1,5 +1,5 @@
 <template>
-  <div id="newTask" class="page-footer z-depth-4">
+  <div id="newTask" class=" z-depth-4">
     <router-link :to="{name: 'projecttasks', params:{project_id: this.$route.params.project_id} }" class="btn">
       <i class="material-icons">arrow_back</i>
     </router-link>
@@ -15,9 +15,10 @@
         </div>
 
         <div class="row">
-          <label>Priority</label><br>
+          <label>Priority</label>
+          <br>
           <div class="input-field col s12">
-            
+
             <input id="slider" type="range" min="1" max="5" step="1" onchange="priority()" />
             <div id="response">{{ response }}</div>
           </div>
@@ -53,6 +54,7 @@
         type: null,
         project_id: this.$route.params.project_id
       }
+      response:  ""
     },
     methods: {
       createTask() {
@@ -69,55 +71,50 @@
       },
 
       // function to be called when slider is changes
-       priority() {
+      priority(){
 
-    //variable to be used in each step 
-    let x = document.getElementById("slider").value;
-    switch (x) {
+        //variable to be used in each step 
+        let x = document.getElementById("slider").value;
+        switch (x) {
 
-      //if slider is on 1
-      case "1":
-        //print the value to console
-        console.log(x);
+          //if slider is on 1
+          case "1":
+            //print the value to console
+            console.log(x);
 
-        //change contents of response div to related feedback
-        document.getElementById("response").innerHTML = "!! URGENT !!";
-        //end of case
-        break;
+            //change contents of response div to related feedback
+            document.getElementById("response").innerHTML = "!! URGENT !!";
+            //end of case
+            break;
 
-      case "2":
-        console.log(x);
-        document.getElementById("response").innerHTML = "TOP PRIORITY";
-        break;
+          case "2":
+            console.log(x);
+            document.getElementById("response").innerHTML = "TOP PRIORITY";
+            break;
 
-      case "3":
-        console.log(x);
-        document.getElementById("response").innerHTML = "Moderately important";
-        break;
+          case "3":
+            console.log(x);
+            document.getElementById("response").innerHTML = "Moderately important";
+            break;
 
-      case "4":
-        console.log(x);
-        document.getElementById("response").innerHTML = "Can Wait";
-        break;
+          case "4":
+            console.log(x);
+            document.getElementById("response").innerHTML = "Can Wait";
+            break;
 
-      case "5":
-        console.log(x);
-        document.getElementById("response").innerHTML = "Low priority";
-        break;
+          case "5":
+            console.log(x);
+            document.getElementById("response").innerHTML = "Low priority";
+            break;
 
-        //default behaviour in case of the above cases not working
-      default:
-        console.log(x);
-        document.getElementById("response").innerHTML += "";
-        //end switch 
+            //default behaviour in case of the above cases not working
+          default:
+            console.log(x);
+            document.getElementById("response").innerHTML += "";
+            //end switch 
+        }
+        //end function
+      }
     }
-    //end function
   }
-    }
-  }
-
-
-
-
-  
 </script>

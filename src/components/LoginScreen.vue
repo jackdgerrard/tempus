@@ -1,5 +1,5 @@
 <template>
-<div id="loginScreen" class="page-footer z-depth-4">
+<div id="loginScreen" class="z-depth-4">
   <p>Login: rokas.mikalauskas95@gmail.com </br> Password: root123 </br>
   </p>
   <div class="container">
