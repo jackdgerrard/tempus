@@ -13,7 +13,7 @@ Rokas Mikalauskas</a><br/> and <a href="http://jackdgerrard.github.io">Jack Gerr
                   <li><a  href="https://firebase.google.com/">Firebase</a></li>
                   <li><a  href="http://materializecss.com/">Materialize</a></li>
                   <li><a  href="https://vuejs.org/">Vue.JS</a></li>
-                  <li><a  href="https://slack.com/">Slack</a></li>
+                  <li><a  href="https://webpack.github.io/">Webpack</a></li>
                   <li><a  href="https://github.com">GitHub</a></li>
                 </ul>
               </div>
