@@ -28,6 +28,6 @@ Rokas Mikalauskas</a><br/> and <a href="http://jackdgerrard.github.io">Jack Gerr
 </template>
 <script>
 export default {
-  name: 'footer'
+  name: 'VueFooter'
 }
 </script>

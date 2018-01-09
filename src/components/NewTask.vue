@@ -83,34 +83,34 @@
             console.log(x);
 
             //change contents of response div to related feedback
-            document.getElementById("response").innerHTML = "!! URGENT !!";
+            response = "!! URGENT !!";
             //end of case
             break;
 
           case "2":
             console.log(x);
-            document.getElementById("response").innerHTML = "TOP PRIORITY";
+            response = "TOP PRIORITY";
             break;
 
           case "3":
             console.log(x);
-            document.getElementById("response").innerHTML = "Moderately important";
+            response = "Moderately important";
             break;
 
           case "4":
             console.log(x);
-            document.getElementById("response").innerHTML = "Can Wait";
+            response = "Can Wait";
             break;
 
           case "5":
             console.log(x);
-            document.getElementById("response").innerHTML = "Low priority";
+            response = "Low priority";
             break;
 
             //default behaviour in case of the above cases not working
           default:
             console.log(x);
-            document.getElementById("response").innerHTML += "";
+            response += "";
             //end switch 
         }
         //end function
