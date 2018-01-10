@@ -10600,8 +10600,12 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 }
 
 /* line 47, C:/Users/JackG/Desktop/tempus/static/Sass/materialize/sass/materialize.scss */
-#dashboard, #loginScreen, #registerScreen, #viewtask {
+#dashboard, #editproject, #loginScreen, #viewtask, #newproject {
   min-height: 100vh;
+  margin: 0;
+  background-color: #40798c;
+  background-image: url(../images/background/soft-wallpaper.png);
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 /*# sourceMappingURL=../../../CSS/materialize/sass/materialize.map */

@@ -1,5 +1,5 @@
 <template>
-<div id="viewtask" class="page-footer z-depth-4">
+<div id="viewtask" class="z-depth-4">
   <ul class="collection with-header">
     <li class="collection-header">
       <h4>{{name}}</h4></li>

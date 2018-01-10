@@ -9,7 +9,7 @@
       <form @submit.prevent="createTask" class="col s12">
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" v-model="name" required>
+            <input type="text" v-model="task" required>
             <label>Task</label>
           </div>
         </div>
@@ -19,8 +19,7 @@
           <br>
           <div class="input-field col s12">
 
-            <input id="slider" type="range" min="1" max="5" step="1" onchange="priority()" />
-            <div id="response">{{ response }}</div>
+            <input id="slider" type="range" min="1" max="5" step="1" v-model="priority" />
           </div>
         </div>
 
@@ -46,75 +45,24 @@
     name: 'newTask',
     data() {
       return {
-        name: null,
+        task: null,
         desc: null,
-        completed: false,
-        assignee: null,
-        date: null,
-        type: null,
-        project_id: this.$route.params.project_id
+        priority: 0,
+        status: null,
       }
-      response:  ""
+
     },
     methods: {
       createTask() {
         db.collection('Tasks').add({
-          task_id: this.task_id,
-          name: this.name,
+          task: this.task,
           desc: this.desc,
-          completed: this.completed,
-          assignee: this.assignee,
-          date: this.date,
-          type: this.type,
-          project_id: this.$route.params.project_id
+          priority: this.priority,
+          status: "idle"
         }).then(docRef => this.$router.push('/' + this.$route.params.project_id))
-      },
-
-      // function to be called when slider is changes
-      priority(){
-
-        //variable to be used in each step 
-        let x = document.getElementById("slider").value;
-        switch (x) {
-
-          //if slider is on 1
-          case "1":
-            //print the value to console
-            console.log(x);
-
-            //change contents of response div to related feedback
-            response = "!! URGENT !!";
-            //end of case
-            break;
-
-          case "2":
-            console.log(x);
-            response = "TOP PRIORITY";
-            break;
-
-          case "3":
-            console.log(x);
-            response = "Moderately important";
-            break;
-
-          case "4":
-            console.log(x);
-            response = "Can Wait";
-            break;
-
-          case "5":
-            console.log(x);
-            response = "Low priority";
-            break;
-
-            //default behaviour in case of the above cases not working
-          default:
-            console.log(x);
-            response += "";
-            //end switch 
-        }
-        //end function
+      }
+  
       }
     }
-  }
+  
 </script>
