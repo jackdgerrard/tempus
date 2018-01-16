@@ -10,9 +10,9 @@
     <li v-for="task in tasks" v-bind:key="task.id" class="collection-item">
       <div class="chip">{{task.task_id}}</div>
       {{task.name}}
-      <span v-if="task.status == 'idle'" class="new badge blue" data-badge-caption="">{{task.status}}</span>
+      <a @click="changeValue(task.task_id, task.status)" :style="{ cursor: 'pointer'}"><span v-if="task.status == 'idle'" class="new badge blue" data-badge-caption="">{{task.status}}</span>
       <span v-if="task.status == 'in progress'" class="new badge green" data-badge-caption="">{{task.status}}</span>
-      <span v-if="task.status == 'closed'" class="new badge red" data-badge-caption="">{{task.status}}</span>
+      <span v-if="task.status == 'closed'" class="new badge red" data-badge-caption="">{{task.status}}</span></a>
       <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
         <i class="material-icons">arrow_forward</i>
       </router-link>
@@ -24,7 +24,7 @@
 
       </div>
     </div>
-      {{completedTasks}} / {{allTasks}}
+    {{completedTasks}} / {{allTasks}}
   </div>
   <router-link to="/" class="btn grey">Back </router-link>
   <button @click="deleteProject" class="btn red">Delete Project</button>
@@ -66,7 +66,7 @@ export default {
           'project_id': doc.data().project_id
         }
         this.tasks.push(data)
-        if(data.status == 'closed'){
+        if (data.status == 'closed') {
           this.completedTasks++
         }
       })
@@ -95,6 +95,25 @@ export default {
           this.$router.push('/')
         })
       })
+    },
+    changeValue(taskid, taskstatus) {
+      db.collection('Tasks').where('task_id', '==', taskid).get().then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          if (taskstatus == 'idle') {
+            doc.ref.update({
+              status: 'in progress'
+            })
+          } else if (taskstatus == 'in progress') {
+            doc.ref.update({
+              status: 'closed'
+            })
+          } else {
+            doc.ref.update({
+              status: 'idle'
+            })
+          }
+        })
+      })
     }
   }
 }
@@ -106,6 +125,7 @@ export default {
   height: 50px;
 
 }
+
 #allTasks {
   width: 100%;
   background-color: black;
