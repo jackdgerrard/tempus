@@ -19,16 +19,15 @@
         </div>
       </div>
       <div class="row">
-        <label>Priority</label>
-        <br>
+        <label for="slider">Priority</label>
         <div class="input-field col s12">
           <input id="slider" type="range" min="1" max="5" step="1" v-model="priority" />
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="desc">
-          <label>Details</label>
+          <textarea id="description" class="materialize-textarea" v-model="desc"> </textarea>
+          <label for="description">Description</label>
         </div>
       </div>
       <button type="submit" class="btn">Submit</button>
@@ -64,7 +63,6 @@ export default {
         project_id: this.$route.params.project_id
       }).then(docRef => this.$router.push('/' + this.$route.params.project_id))
     }
-
   }
 }
 </script>

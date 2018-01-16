@@ -15,7 +15,7 @@
 
   <div class="fixed-action-btn">
     <router-link v-bind:to="{name: 'editTask', params: {task_id: this.$route.params.task_id}}" class="btn-floating btn-large blue">
-      <i class="fa fa-pencil"></i>
+      <i class="fa fa-pencil">-></i>
     </router-link>
   </div>
 </div>
