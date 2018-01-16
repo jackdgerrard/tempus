@@ -10,12 +10,21 @@
     <li v-for="task in tasks" v-bind:key="task.id" class="collection-item">
       <div class="chip">{{task.task_id}}</div>
       {{task.name}}
-      <span class="new badge blue" data-badge-caption="">{{task.status}}</span>
+      <span v-if="task.status == 'idle'" class="new badge blue" data-badge-caption="">{{task.status}}</span>
+      <span v-if="task.status == 'in progress'" class="new badge green" data-badge-caption="">{{task.status}}</span>
+      <span v-if="task.status == 'closed'" class="new badge red" data-badge-caption="">{{task.status}}</span>
       <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
         <i class="material-icons">arrow_forward</i>
       </router-link>
     </li>
   </ul>
+  <div class="container">
+    <div id="allTasks">
+      <div class="completed valign-wrapper" :style="{width: completedTasks*100/allTasks + '%'}">
+        {{completedTasks}} / {{allTasks}}
+      </div>
+    </div>
+  </div>
   <router-link to="/" class="btn grey">Back </router-link>
   <button @click="deleteProject" class="btn red">Delete Project</button>
   <router-link v-bind:to="{name: 'editproject', params: {project_id: this.$route.params.project_id}}">
@@ -37,7 +46,10 @@ export default {
   data() {
     return {
       tasks: [],
-      projectname: null
+      projectname: null,
+      allTasks: 50,
+      completedTasks: 35
+      //projectcompleted: 0
     }
   },
   created() {
@@ -59,7 +71,7 @@ export default {
     db.collection('projects').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         const projectData = {
-          'projectname' : doc.data().name
+          'projectname': doc.data().name
         }
         this.projectname = projectData.projectname
       })
@@ -83,3 +95,15 @@ export default {
   }
 }
 </script>
+<style scoped>
+.completed {
+  color: white;
+  background-color: #2ECC40;
+  height: 50px;
+  padding: 2em;
+}
+#allTasks {
+  background-color: black;
+  margin-bottom: 10px;
+}
+</style>

@@ -95,7 +95,6 @@ export default {
       db.collection('Tasks').where('task_id', '==', this.$route.params.task_id).get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 doc.ref.update({
-                  task_id: this.task_id,
                   name: this.name,
                   desc: this.desc,
                   priority: this.priority,
