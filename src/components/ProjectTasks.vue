@@ -20,10 +20,11 @@
   </ul>
   <div class="container">
     <div id="allTasks">
-      <div class="completed valign-wrapper" :style="{width: completedTasks*100/allTasks + '%'}">
-        {{completedTasks}} / {{allTasks}}
+      <div class="completed" :style="{width: completedTasks*100/allTasks + '%'}">
+
       </div>
     </div>
+      {{completedTasks}} / {{allTasks}}
   </div>
   <router-link to="/" class="btn grey">Back </router-link>
   <button @click="deleteProject" class="btn red">Delete Project</button>
@@ -47,9 +48,8 @@ export default {
     return {
       tasks: [],
       projectname: null,
-      allTasks: 50,
-      completedTasks: 35
-      //projectcompleted: 0
+      allTasks: 0,
+      completedTasks: 0
     }
   },
   created() {
@@ -66,7 +66,11 @@ export default {
           'project_id': doc.data().project_id
         }
         this.tasks.push(data)
+        if(data.status == 'closed'){
+          this.completedTasks++
+        }
       })
+      this.allTasks = this.tasks.length
     })
     db.collection('projects').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
@@ -100,9 +104,10 @@ export default {
   color: white;
   background-color: #2ECC40;
   height: 50px;
-  padding: 2em;
+
 }
 #allTasks {
+  width: 100%;
   background-color: black;
   margin-bottom: 10px;
 }
