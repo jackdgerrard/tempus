@@ -9,12 +9,12 @@
         {{project.name}}
         <router-link class="secondary-content" v-bind:to="{name: 'projecttasks', params: {project_id: project.project_id}}">
 
-          <!--task status-->
+          <!--task status
           <span id="task-status" v-on:click="statusToggle()">
               {status}
           </span>
-          
-          
+          -->
+
           <i class="material-icons">arrow_forward</i>
         </router-link>
       </li>

@@ -4,10 +4,9 @@
     <li class="collection-header">
       <h4>{{name}}</h4></li>
     <li class="collection-item"> Date created: {{date}}</li>
-    <li class="collection-item"> Type: {{type}}</li>
-    <li class="collection-item"> Completed: {{completed}}</li>
+    <li class="collection-item"> Priority: {{priority}}</li>
     <li class="collection-item"> Description: {{desc}}</li>
-    <li class="collection-item"> Assigned: {{assignee}}</li>
+    <li class="collection-item"> Status: {{status}}</li>
     <li class="collection-item"> Task ID: {{task_id}}</li>
 
     <router-link :to="{name: 'projecttasks', params:{project_id: this.$route.params.project_id} }" class="btn grey">Back </router-link>
@@ -24,6 +23,7 @@
 
 
 <script>
+import moment from 'moment'
 import db from './firebaseInit'
 export default {
   name: 'viewTask',
@@ -32,10 +32,10 @@ export default {
       task_id: null,
       name: null,
       desc: null,
-      completed: false,
-      assignee: null,
+      priority: 0,
+      status: null,
       date: null,
-      type: null
+      project_id: null
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -43,12 +43,12 @@ export default {
       querySnapshot.forEach(doc => {
         next(vm => {
           vm.task_id = doc.data().task_id,
-            vm.name = doc.data().name,
-            vm.desc = doc.data().desc,
-            vm.completed = doc.data().completed,
-            vm.assignee = doc.data().assignee,
-            vm.date = doc.data().date,
-            vm.type = doc.data().type
+          vm.name = doc.data().name,
+          vm.desc = doc.data().desc,
+          vm.status = doc.data().status,
+          vm.priority = doc.data().priority,
+          vm.date = moment.unix(doc.data().date).format("MM/DD/YYYY HH:mm")
+          vm.project_id = doc.data().project_id
         })
       })
     })
@@ -63,10 +63,10 @@ export default {
             this.task_id = doc.id,
             this.name = doc.data().name,
             this.desc = doc.data().desc,
-            this.completed = doc.data().completed,
-            this.assignee = doc.data().assignee,
+            this.status = doc.data().status,
+            this.priority = doc.data().priority,
             this.date = doc.data().date,
-            this.type = doc.data().type
+            this.project_id = doc.data().project_id
         })
       })
     },

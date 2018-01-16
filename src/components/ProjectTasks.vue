@@ -5,7 +5,7 @@
       <h5>Tasks</h5>
     </li>
     <li v-for="task in tasks" v-bind:key="task.id" class="collection-item">
-      <div class="chip">{{task.task}}</div>
+      <div class="chip">{{task.task_id}}</div>
       {{task.desc}}
       {{task.status}}
       <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
