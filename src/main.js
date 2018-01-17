@@ -6,6 +6,9 @@ import router from './router'
 import firebase from 'firebase'
 import Vuex from 'vuex'
 
+// Stylesheet
+
+
 Vue.config.productionTip = false
 Vue.use(Vuex)
 

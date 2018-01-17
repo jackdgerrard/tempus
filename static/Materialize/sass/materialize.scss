@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 // Colors
-@import "components/palette"; // palette must be previous to color
 @import "components/color";
 
 // Variables;
@@ -41,14 +40,3 @@
 @import "components/date_picker/default";
 @import "components/date_picker/default.date";
 @import "components/date_picker/default.time";
-
-//custom css here
-
-#dashboard,#editproject,#loginScreen,#viewtask, #newproject{
-    min-height: 100vh;
-    margin: 0;
-    background-color: #40798c;
-    background-image: url(../images/background/soft-wallpaper.png);
-
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
-}
