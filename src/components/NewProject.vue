@@ -1,5 +1,5 @@
 <template>
-<div id="newproject" class="page-footer z-depth-4">
+<div id="newproject" class="z-depth-4">
   <div class="container">
     <h3>Add new Project</h3>
     <form @submit.prevent="createProject" class="col s12">

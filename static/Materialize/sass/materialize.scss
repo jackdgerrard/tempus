@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 // Colors
-@import "components/palette"; // palette must be previous to color
 @import "components/color";
 
 // Variables;
@@ -41,9 +40,3 @@
 @import "components/date_picker/default";
 @import "components/date_picker/default.date";
 @import "components/date_picker/default.time";
-
-//custom css here
-
-#dashboard,#loginScreen,#registerScreen,#viewtask{
-    min-height: 100vh;
-}

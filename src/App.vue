@@ -3,18 +3,18 @@
   <Navbar />
   <div class="container"/>
   <router-view/>
-  <Footer /> 
+  <VueFooter /> 
 </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
-import Footer from './components/Footer'
+import VueFooter from './components/VueFooter'
 export default {
   name: 'app',
   components: {
     Navbar,
-    Footer
+    VueFooter
   }
 }
 </script>

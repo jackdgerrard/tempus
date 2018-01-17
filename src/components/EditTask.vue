@@ -1,5 +1,5 @@
 <template>
-<div id="editTask page-footer z-depth-4">
+<div id="editTask">
   <h3>Add new Task</h3>
   <div class="row">
     <form @submit.prevent="updateTask" class="col s12">
@@ -10,25 +10,29 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="name" required>
+          <input type="text" v-model="name" >
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="desc">
+          <input type="text" v-model="desc" >
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="assignee">
+          <input type="text" v-model="priority" >
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="type">
+          <input type="text" v-model="status" >
         </div>
       </div>
-
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" v-model="date" disabled>
+        </div>
+      </div>
 
 
       <button type="submit" class="btn">Submit</button>
@@ -40,6 +44,7 @@
 
 
 <script>
+import moment from 'moment'
 import db from './firebaseInit'
 export default {
   name: 'editTask',
@@ -48,10 +53,10 @@ export default {
       task_id: null,
       name: null,
       desc: null,
-      completed: false,
-      assignee: null,
+      priority: 0,
+      status: null,
       date: null,
-      type: null
+      project_id: null
     }
   },
   beforeRouteEnter(to, from, next) {
@@ -61,10 +66,10 @@ export default {
           vm.task_id = doc.data().task_id,
             vm.name = doc.data().name,
             vm.desc = doc.data().desc,
-            vm.completed = doc.data().completed,
-            vm.assignee = doc.data().assignee,
-            vm.date = doc.data().date,
-            vm.type = doc.data().type
+            vm.priority = doc.data().priority,
+            vm.status = doc.data().status,
+            vm.date = moment.unix(doc.data().date).format("MM/DD/YYYY HH:mm")
+            vm.project_id = doc.data().project_id
         })
       })
     })
@@ -79,10 +84,10 @@ export default {
           this.task_id = doc.id,
             this.name = doc.data().name,
             this.desc = doc.data().desc,
-            this.completed = doc.data().completed,
-            this.assignee = doc.data().assignee,
+            this.priority = doc.data().priority,
+            this.status = doc.data().status,
             this.date = doc.data().date,
-            this.type = doc.data().type
+            this.project_id = doc.data().project_id
         })
       })
     },
@@ -90,13 +95,10 @@ export default {
       db.collection('Tasks').where('task_id', '==', this.$route.params.task_id).get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 doc.ref.update({
-                  task_id: this.task_id,
                   name: this.name,
                   desc: this.desc,
-                  completed: this.completed,
-                  assignee: this.assignee,
-                  date: this.date,
-                  type: this.type
+                  priority: this.priority,
+                  status: this.status,
                 }).then(() =>{
                   this.$router.push({name: 'viewtask', params: {task_id: this.task_id}})
           })

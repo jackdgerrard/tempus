@@ -1,5 +1,5 @@
 <template>
-<div id="registerScreen" class="page-footer z-depth-4">
+<div id="registerScreen" class="z-depth-4">
   <div class="container">
     <h2> Register </h2>
     <form @submit.prevent="register" class="col s12">

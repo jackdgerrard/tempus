@@ -1,5 +1,5 @@
 <template>
-<div id="editproject page-footer z-depth-4">
+<div id="editproject">
   <h3>Edit Project Details</h3>
   <div class="row">
     <form @submit.prevent="updateProject" class="col s12">
@@ -66,7 +66,6 @@ export default {
       db.collection('projects').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 doc.ref.update({
-                  project_id: this.project_id,
                   name: this.name
                 }).then(() =>{
                   this.$router.push({name: 'projecttasks', params: {project_id: this.project_id}})
