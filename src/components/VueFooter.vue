@@ -1,3 +1,9 @@
+
+<script>
+const date = new Date();
+const year = Date.getYear();
+</script>
+
 <template>
 <footer class="page-footer">
     <div class="container">
@@ -21,7 +27,7 @@ Rokas Mikalauskas</a><br/> and <a href="http://jackdgerrard.github.io">Jack Gerr
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2014 Tempus Project
+             <i class="material-icons">&#xE90C;</i> {{ new Date().getFullYear() }} Tempus Project
             </div>
           </div>
 </footer>
