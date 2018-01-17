@@ -97,17 +97,29 @@ export default {
       })
     },
     changeValue(taskid, taskstatus) {
+      let indx = 0
+      for (let x = 0; x < this.tasks.length; x++) {
+        if (this.tasks[x].task_id == taskid) {
+          indx = x
+        }
+      }
+
       db.collection('Tasks').where('task_id', '==', taskid).get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
           if (taskstatus == 'idle') {
+            this.tasks[indx].status = 'in progress'
             doc.ref.update({
               status: 'in progress'
             })
           } else if (taskstatus == 'in progress') {
+            this.completedTasks++
+            this.tasks[indx].status = 'closed'
             doc.ref.update({
               status: 'closed'
             })
           } else {
+            this.completedTasks--
+            this.tasks[indx].status = 'idle'
             doc.ref.update({
               status: 'idle'
             })
