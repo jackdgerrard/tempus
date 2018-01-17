@@ -2547,7 +2547,7 @@ ul:not(.browser-default) > li {
 }
 
 a {
-  color: #039be5;
+  color: #f4511e;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -2606,7 +2606,7 @@ a {
 blockquote {
   margin: 20px 0;
   padding-left: 1.5rem;
-  border-left: 5px solid #4dd0e1;
+  border-left: 5px solid #90a4ae;
 }
 
 i {
@@ -2666,7 +2666,7 @@ video.responsive-video {
 }
 
 .pagination li.active {
-  background-color: #4dd0e1;
+  background-color: #90a4ae;
 }
 
 .pagination li.disabled a {
@@ -2850,7 +2850,7 @@ ul.staggered-list li {
 .page-footer {
   padding-top: 20px;
   color: #fff;
-  background-color: #4dd0e1;
+  background-color: #90a4ae;
 }
 
 .page-footer .footer-copyright {
@@ -4129,7 +4129,7 @@ nav ul a span.badge {
 
 nav {
   color: #fff;
-  background-color: #4dd0e1;
+  background-color: #90a4ae;
   width: 100%;
   height: 56px;
   line-height: 56px;
@@ -4337,31 +4337,31 @@ nav .input-field label.active i {
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Thin), url("../static/materialize/fonts/roboto/Roboto-Thin.woff2") format("woff2"), url("../static/materialize/fonts/roboto/Roboto-Thin.woff") format("woff");
+  src: local(Roboto Thin), url("../static/Materialize/fontsRoboto-Thin.woff2") format("woff2"), url("../static/Materialize/fontsRoboto-Thin.woff") format("woff");
   font-weight: 100;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Light), url("../static/materialize/fonts/roboto/Roboto-Light.woff2") format("woff2"), url("../static/materialize/fonts/roboto/Roboto-Light.woff") format("woff");
+  src: local(Roboto Light), url("../static/Materialize/fontsRoboto-Light.woff2") format("woff2"), url("../static/Materialize/fontsRoboto-Light.woff") format("woff");
   font-weight: 300;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Regular), url("../static/materialize/fonts/roboto/Roboto-Regular.woff2") format("woff2"), url("../static/materialize/fonts/roboto/Roboto-Regular.woff") format("woff");
+  src: local(Roboto Regular), url("../static/Materialize/fontsRoboto-Regular.woff2") format("woff2"), url("../static/Materialize/fontsRoboto-Regular.woff") format("woff");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Medium), url("../static/materialize/fonts/roboto/Roboto-Medium.woff2") format("woff2"), url("../static/materialize/fonts/roboto/Roboto-Medium.woff") format("woff");
+  src: local(Roboto Medium), url("../static/Materialize/fontsRoboto-Medium.woff2") format("woff2"), url("../static/Materialize/fontsRoboto-Medium.woff") format("woff");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: local(Roboto Bold), url("../static/materialize/fonts/roboto/Roboto-Bold.woff2") format("woff2"), url("../static/materialize/fonts/roboto/Roboto-Bold.woff") format("woff");
+  src: local(Roboto Bold), url("../static/Materialize/fontsRoboto-Bold.woff2") format("woff2"), url("../static/Materialize/fontsRoboto-Bold.woff") format("woff");
   font-weight: 700;
 }
 
@@ -4916,7 +4916,7 @@ small {
 }
 
 .tabs .tab a {
-  color: rgba(77, 208, 225, 0.7);
+  color: rgba(144, 164, 174, 0.7);
   display: block;
   width: 100%;
   height: 100%;
@@ -4929,12 +4929,12 @@ small {
 
 .tabs .tab a:hover, .tabs .tab a.active {
   background-color: transparent;
-  color: #4dd0e1;
+  color: #90a4ae;
 }
 
 .tabs .tab.disabled a,
 .tabs .tab.disabled a:hover {
-  color: rgba(77, 208, 225, 0.7);
+  color: rgba(144, 164, 174, 0.7);
   cursor: default;
 }
 
@@ -4942,7 +4942,7 @@ small {
   position: absolute;
   bottom: 0;
   height: 2px;
-  background-color: #8ee1ec;
+  background-color: #bcc8ce;
   will-change: left, right;
 }
 
@@ -5079,7 +5079,7 @@ small {
 
 .btn-floating {
   display: inline-block;
-  color: deep-orange;
+  color: "deep-orange";
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -5130,7 +5130,7 @@ small {
   width: inherit;
   display: inline-block;
   text-align: center;
-  color: deep-orange;
+  color: "deep-orange";
   font-size: 1.6rem;
   line-height: 40px;
 }
@@ -7073,13 +7073,13 @@ input[type=range]:focus::-ms-fill-upper {
 .table-of-contents a:hover {
   color: #a8a8a8;
   padding-left: 19px;
-  border-left: 1px solid #4dd0e1;
+  border-left: 1px solid #90a4ae;
 }
 
 .table-of-contents a.active {
   font-weight: 500;
   padding-left: 18px;
-  border-left: 2px solid #4dd0e1;
+  border-left: 2px solid #90a4ae;
 }
 
 .side-nav {
@@ -7282,7 +7282,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav .collapsible-body > ul:not(.collapsible) > li.active,
 .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {
-  background-color: #4dd0e1;
+  background-color: #90a4ae;
 }
 
 .side-nav .collapsible-body > ul:not(.collapsible) > li.active a,
@@ -8018,7 +8018,7 @@ input[type=range]:focus::-ms-fill-upper {
   position: absolute;
   font-size: 1rem;
   border-radius: 50%;
-  background-color: #4dd0e1;
+  background-color: #90a4ae;
   box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.14), 0 10px 50px 0 rgba(0, 0, 0, 0.12), 0 30px 10px -20px rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 100%;
@@ -9047,4 +9047,26 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   stroke-width: 4;
   stroke-linecap: round;
   /*shape-rendering: crispEdges;*/
+}
+
+footer {
+  margin-top: 50vh;
+}
+
+.completed {
+  background-color: #ff5722;
+  height: 50px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  width: 100%;
+  margin-left: -20px;
+}
+
+#allTasks {
+  color: #ff5722;
+}
+
+.chip {
+  color: #ff5722;
 }

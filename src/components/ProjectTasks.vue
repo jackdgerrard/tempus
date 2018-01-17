@@ -1,30 +1,61 @@
 <template>
-<div id="dashboard page-footer z-depth-4">
-  <ul class="collection with-header">
-    <li class="collection-header">
+
+<div id="dashboard">
+
+  <section class="collection with-header">
+
+    <h3 class="collection-header">
+
       <h5>{{projectname}}</h5>
-    </li>
-    <li v-if="tasks.length == 0">
+
+    </h3>
+
+    <p v-if="tasks.length == 0">
       No tasks yet!
-    </li>
-    <li v-for="task in tasks" v-bind:key="task.id" class="collection-item">
-      <div class="chip">{{task.task_id}}</div>
-      {{task.name}}
-      <a @click="changeValue(task.task_id, task.status)" :style="{ cursor: 'pointer'}"><span v-if="task.status == 'idle'" class="new badge blue" data-badge-caption="">{{task.status}}</span>
-      <span v-if="task.status == 'in progress'" class="new badge green" data-badge-caption="">{{task.status}}</span>
-      <span v-if="task.status == 'closed'" class="new badge red" data-badge-caption="">{{task.status}}</span></a>
-      <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
-        <i class="material-icons">arrow_forward</i>
-      </router-link>
-    </li>
-  </ul>
+    </p>
+
+    <ul>
+      
+      <li 
+      v-for="task in tasks" 
+      v-bind:key="task.id" 
+      class="collection-item">
+      
+        <div 
+        v-if="task.priority!=0"
+        class="chip">
+          {{task.priority}}
+        </div> 
+        
+        {{task.name}}
+
+        <a @click="changeValue(task.task_id, task.status)" :style="{ cursor: 'pointer'}">
+          
+        <span v-if="task.status == 'to-do'" class="new badge red" data-badge-caption="">{{task.status}}</span>
+        <span v-if="task.status == 'in progress'" class="new badge blue" data-badge-caption="">{{task.status}}</span>
+        <span v-if="task.status == 'complete'" class="new badge green" data-badge-caption="">{{task.status}}</span>
+
+        </a>
+
+        <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
+          <i class="material-icons">arrow_forward</i>
+        </router-link>
+
+      </li>
+    </ul>
+  </section>
+
+
   <div class="container">
     <div id="allTasks">
-      <div class="completed" :style="{width: completedTasks*100/allTasks + '%'}">
-
-      </div>
+      <figure 
+      v-if="tasks.length!=0" 
+      class="completed" 
+      style="{width: completedTasks*100/allTasks + '%'}">
+      </figure>
+      {{completedTasks}} / {{allTasks}}
     </div>
-    {{completedTasks}} / {{allTasks}}
+    
   </div>
   <router-link to="/" class="btn grey">Back </router-link>
   <button @click="deleteProject" class="btn red">Delete Project</button>
@@ -53,16 +84,14 @@ export default {
     }
   },
   created() {
-    db.collection('Tasks').where('project_id', '==', this.$route.params.project_id).orderBy('date').get().then(querySnapshot => {
+    db.collection('Tasks').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         const data = {
           'id': doc.id,
-          'task_id': doc.data().task_id,
           'name': doc.data().name,
           'desc': doc.data().desc,
           'status': doc.data().status,
           'priority': doc.data().priority,
-          'date': doc.data().date,
           'project_id': doc.data().project_id
         }
         this.tasks.push(data)
@@ -106,22 +135,22 @@ export default {
 
       db.collection('Tasks').where('task_id', '==', taskid).get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          if (taskstatus == 'idle') {
+          if (taskstatus == 'in progress') {
             this.tasks[indx].status = 'in progress'
             doc.ref.update({
               status: 'in progress'
             })
-          } else if (taskstatus == 'in progress') {
+          } else if (taskstatus == 'completed') {
             this.completedTasks++
-            this.tasks[indx].status = 'closed'
+            this.tasks[indx].status = 'completed'
             doc.ref.update({
-              status: 'closed'
+              status: 'completed'
             })
           } else {
             this.completedTasks--
-            this.tasks[indx].status = 'idle'
+            this.tasks[indx].status = 'to-do'
             doc.ref.update({
-              status: 'idle'
+              status: 'to-do'
             })
           }
         })
@@ -131,16 +160,5 @@ export default {
 }
 </script>
 <style scoped>
-.completed {
-  color: white;
-  background-color: #2ECC40;
-  height: 50px;
-
-}
-
-#allTasks {
-  width: 100%;
-  background-color: black;
-  margin-bottom: 10px;
-}
+/* moved to sass*/
 </style>

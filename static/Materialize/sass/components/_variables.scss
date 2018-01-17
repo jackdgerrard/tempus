@@ -35,14 +35,14 @@
 // 1. Colors
 // ==========================================================================
 
-$primary-color: color("cyan", "lighten-2") !default;
+$primary-color: color("blue-grey", "lighten-2") !default;
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 
 $secondary-color: color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
-$link-color: color("light-blue", "darken-1") !default;
+$link-color: color("deep-orange", "darken-1") !default;
 
 
 // 2. Badges
@@ -84,7 +84,7 @@ $button-flat-disabled-color: lighten(#999, 10%) !default;
 // Floating buttons
 $button-floating-background: $secondary-color !default;
 $button-floating-background-hover: $button-floating-background !default;
-$button-floating-color: deep-orange !default;
+$button-floating-color: 'deep-orange' !default;
 $button-floating-size: 40px !default;
 $button-floating-large-size: 56px !default;
 $button-floating-radius: 50% !default;
@@ -153,7 +153,7 @@ $dropdown-item-height: 50px !default;
 // 10. Fonts
 // ==========================================================================
 
-$roboto-font-path: "../static/materialize/fonts/roboto/" !default;
+$roboto-font-path: "../static/Materialize/fonts" !default;
 
 
 // 11. Forms
