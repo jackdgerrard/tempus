@@ -1,10 +1,16 @@
+import NewTask from 'NewTask.vue'
+
 <template>
 
 <div id="dashboard">
 
-  <section class="collection with-header">
+  <modal name="new-task">
+    {{NewTask}}
+  </modal>
 
-    <h3 class="collection-header">
+  <section classname="collection with-header">
+
+    <h3 classname="collection-header">
 
       <h5>{{projectname}}</h5>
 
@@ -19,11 +25,11 @@
       <li 
       v-for="task in tasks" 
       v-bind:key="task.id" 
-      class="collection-item">
+      classname="collection-item">
       
         <div 
         v-if="task.priority!=0"
-        class="chip">
+        classname="chip">
           {{task.priority}}
         </div> 
         
@@ -31,14 +37,14 @@
 
         <a @click="changeValue(task.task_id, task.status)" :style="{ cursor: 'pointer'}">
           
-        <span v-if="task.status == 'to-do'" class="new badge red" data-badge-caption="">{{task.status}}</span>
-        <span v-if="task.status == 'in progress'" class="new badge blue" data-badge-caption="">{{task.status}}</span>
-        <span v-if="task.status == 'complete'" class="new badge green" data-badge-caption="">{{task.status}}</span>
+        <span v-if="task.status == 'to-do'" classname="new badge red" data-badge-caption="">{{task.status}}</span>
+        <span v-if="task.status == 'in progress'" classname="new badge blue" data-badge-caption="">{{task.status}}</span>
+        <span v-if="task.status == 'complete'" classname="new badge green" data-badge-caption="">{{task.status}}</span>
 
         </a>
 
-        <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
-          <i class="material-icons">arrow_forward</i>
+        <router-link classname="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
+          <i classname="material-icons">arrow_forward</i>
         </router-link>
 
       </li>
@@ -46,28 +52,25 @@
   </section>
 
 
-  <div class="container">
+  <div classname="container">
     <div id="allTasks">
       <figure 
       v-if="tasks.length!=0" 
-      class="completed" 
+      classname="completed" 
       style="{width: completedTasks*100/allTasks + '%'}">
       </figure>
       {{completedTasks}} / {{allTasks}}
     </div>
     
   </div>
-  <router-link to="/" class="btn grey">Back </router-link>
+  <router-link to="/" class="btn"><i class="material-icons">arrow_back</i></router-link>
   <button @click="deleteProject" class="btn red">Delete Project</button>
+
   <router-link v-bind:to="{name: 'editproject', params: {project_id: this.$route.params.project_id}}">
     <button class="btn blue"> Edit Project </button>
   </router-link>
-  <div class="fixed-action-btn">
-    <router-link :to="{name: 'newtask', params:{project_id: this.$route.params.project_id} }" class="btn-floating btn-large waves-effect waves-light">
-      <i class="material-icons">add</i>
-    </router-link>
-  </div>
-</div>
+
+</div> <!-- ends dashboard --> 
 </template>
 
 <script>
@@ -111,6 +114,14 @@ export default {
     })
   },
   methods: {
+    methods: {
+  show () {
+    this.$modal.show('new-tasks');
+  },
+  hide () {
+    this.$modal.hide('new-tasks');
+  }
+},
     deleteProject() {
       //deletes all projects, and tasks associated with them
       db.collection('projects').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {

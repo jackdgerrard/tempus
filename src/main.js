@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import firebase from 'firebase'
 import Vuex from 'vuex'
+import VModal from 'vue-js-modal'
 
 // Stylesheet
 

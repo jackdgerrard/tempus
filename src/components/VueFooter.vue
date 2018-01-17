@@ -1,9 +1,3 @@
-
-<script>
-const date = new Date();
-const year = Date.getYear();
-</script>
-
 <template>
 <footer class="page-footer">
     <div class="container">
@@ -32,6 +26,7 @@ Rokas Mikalauskas</a><br/> and <a href="http://jackdgerrard.github.io">Jack Gerr
           </div>
 </footer>
 </template>
+
 <script>
 export default {
   name: 'VueFooter'
