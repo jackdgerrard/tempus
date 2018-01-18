@@ -20,12 +20,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="priority" >
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="text" v-model="status" >
+          <input id="slider" type="range" min="1" max="5" step="1" v-model="priority" />
         </div>
       </div>
       <div class="row">
@@ -97,8 +92,7 @@ export default {
                 doc.ref.update({
                   name: this.name,
                   desc: this.desc,
-                  priority: this.priority,
-                  status: this.status,
+                  priority: this.priority
                 }).then(() =>{
                   this.$router.push({name: 'viewtask', params: {task_id: this.task_id}})
           })

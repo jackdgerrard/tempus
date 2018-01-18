@@ -10,10 +10,11 @@
     <li v-for="task in tasks" v-bind:key="task.id" class="collection-item">
       <div class="chip">{{task.task_id}}</div>
       {{task.name}}
+      <div class="chip"> {{task.priority}}</div>
       <a @click="changeValue(task.task_id, task.status)" :style="{ cursor: 'pointer'}"><span v-if="task.status == 'idle'" class="new badge blue" data-badge-caption="">{{task.status}}</span>
       <span v-if="task.status == 'in progress'" class="new badge green" data-badge-caption="">{{task.status}}</span>
       <span v-if="task.status == 'closed'" class="new badge red" data-badge-caption="">{{task.status}}</span></a>
-      <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
+      <router-link class="secondary-content" :to="{name: 'viewtask', params: {task_id: task.task_id}}">
         <i class="material-icons">arrow_forward</i>
       </router-link>
     </li>
@@ -24,7 +25,11 @@
 
       </div>
     </div>
-    {{completedTasks}} / {{allTasks}}
+    <div>
+      <h4 class="center-align">
+        {{completedTasks}} / {{allTasks}} Tasks Completed
+    </h4>
+    </div>
   </div>
   <router-link to="/" class="btn grey">Back </router-link>
   <button @click="deleteProject" class="btn red">Delete Project</button>
@@ -53,7 +58,7 @@ export default {
     }
   },
   created() {
-    db.collection('Tasks').where('project_id', '==', this.$route.params.project_id).orderBy('date').get().then(querySnapshot => {
+    db.collection('Tasks').where('project_id', '==', this.$route.params.project_id).orderBy('priority').get().then(querySnapshot => {
       querySnapshot.forEach(doc => {
         const data = {
           'id': doc.id,
@@ -104,6 +109,7 @@ export default {
         }
       }
 
+
       db.collection('Tasks').where('task_id', '==', taskid).get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
           if (taskstatus == 'idle') {
@@ -113,13 +119,13 @@ export default {
             })
           } else if (taskstatus == 'in progress') {
             this.completedTasks++
-            this.tasks[indx].status = 'closed'
+              this.tasks[indx].status = 'closed'
             doc.ref.update({
               status: 'closed'
             })
           } else {
             this.completedTasks--
-            this.tasks[indx].status = 'idle'
+              this.tasks[indx].status = 'idle'
             doc.ref.update({
               status: 'idle'
             })
@@ -133,9 +139,9 @@ export default {
 <style scoped>
 .completed {
   color: white;
-  background-color: #2ECC40;
+  background-color: #4dd0e1;
   height: 50px;
-
+  transition: 0.5s ease;
 }
 
 #allTasks {
