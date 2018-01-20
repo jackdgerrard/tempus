@@ -74,101 +74,121 @@ import NewTask from 'NewTask.vue'
 </template>
 
 <script>
-import db from './firebaseInit'
-import firebase from 'firebase'
+import db from "./firebaseInit";
+import firebase from "firebase";
 export default {
-  name: 'projecttasks',
+  name: "projecttasks",
   data() {
     return {
       tasks: [],
       projectname: null,
       allTasks: 0,
       completedTasks: 0
-    }
+    };
   },
   created() {
-    db.collection('Tasks').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        const data = {
-          'id': doc.id,
-          'name': doc.data().name,
-          'desc': doc.data().desc,
-          'status': doc.data().status,
-          'priority': doc.data().priority,
-          'project_id': doc.data().project_id
-        }
-        this.tasks.push(data)
-        if (data.status == 'closed') {
-          this.completedTasks++
-        }
-      })
-      this.allTasks = this.tasks.length
-    })
-    db.collection('projects').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
-      querySnapshot.forEach(doc => {
-        const projectData = {
-          'projectname': doc.data().name
-        }
-        this.projectname = projectData.projectname
-      })
-    })
+    db
+      .collection("Tasks")
+      .where("project_id", "==", this.$route.params.project_id)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          const data = {
+            id: doc.id,
+            name: doc.data().name,
+            desc: doc.data().desc,
+            status: doc.data().status,
+            priority: doc.data().priority,
+            project_id: doc.data().project_id
+          };
+          this.tasks.push(data);
+          if (data.status == "closed") {
+            this.completedTasks++;
+          }
+        });
+        this.allTasks = this.tasks.length;
+      });
+    db
+      .collection("projects")
+      .where("project_id", "==", this.$route.params.project_id)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          const projectData = {
+            projectname: doc.data().name
+          };
+          this.projectname = projectData.projectname;
+        });
+      });
   },
   methods: {
     methods: {
-  show () {
-    this.$modal.show('new-tasks');
-  },
-  hide () {
-    this.$modal.hide('new-tasks');
-  }
-},
+      show() {
+        this.$modal.show("new-tasks");
+      },
+      hide() {
+        this.$modal.hide("new-tasks");
+      }
+    },
     deleteProject() {
       //deletes all projects, and tasks associated with them
-      db.collection('projects').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          db.collection('Tasks').where('project_id', '==', this.$route.params.project_id).get().then(querySnapshot => {
-            querySnapshot.forEach(doc => {
-              doc.ref.delete()
-            })
-          })
-          doc.ref.delete()
-          this.$router.push('/')
-        })
-      })
+      db
+        .collection("projects")
+        .where("project_id", "==", this.$route.params.project_id)
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            db
+              .collection("Tasks")
+              .where("project_id", "==", this.$route.params.project_id)
+              .get()
+              .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                  doc.ref.delete();
+                });
+              });
+            doc.ref.delete();
+            this.$router.push("/");
+          });
+        });
     },
     changeValue(taskid, taskstatus) {
-      let indx = 0
+      let indx = 0;
       for (let x = 0; x < this.tasks.length; x++) {
         if (this.tasks[x].task_id == taskid) {
-          indx = x
+          indx = x;
         }
       }
 
-      db.collection('Tasks').where('task_id', '==', taskid).get().then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-          if (taskstatus == 'in progress') {
-            this.tasks[indx].status = 'in progress'
-            doc.ref.update({
-              status: 'in progress'
-            })
-          } else if (taskstatus == 'completed') {
-            this.completedTasks++
-            this.tasks[indx].status = 'completed'
-            doc.ref.update({
-              status: 'completed'
-            })
-          } else {
-            this.completedTasks--
-            this.tasks[indx].status = 'to-do'
-            doc.ref.update({
-              status: 'to-do'
-            })
-          }
-        })
-      })
+      db
+        .collection("Tasks")
+        .where("task_id", "==", taskid)
+        .get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            if (taskstatus == "in progress") {
+              this.tasks[indx].status = "in progress";
+              doc.ref.update({
+                status: "in progress"
+              });
+            } else if (taskstatus == "completed") {
+              this.completedTasks++;
+              this.tasks[indx].status = "completed";
+              doc.ref.update({
+                status: "completed"
+              });
+            } else {
+              this.completedTasks--;
+              this.tasks[indx].status = "to-do";
+              doc.ref.update({
+                status: "to-do"
+              });
+            }
+          });
+        });
     }
   }
-}
+};
 </script>
 <style scoped>
 /* moved to sass*/

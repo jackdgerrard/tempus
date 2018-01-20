@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-import VueFooter from './components/VueFooter'
+import Navbar from "./components/Navbar";
+import VueFooter from "./components/VueFooter";
 export default {
-  name: 'app',
+  name: "app",
   components: {
     Navbar,
     VueFooter
   }
-}
+};
 </script>

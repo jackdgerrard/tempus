@@ -24,28 +24,31 @@
 </div>
 </template>
 <script>
-import firebase from 'firebase'
-import Vuex from 'vuex'
+import firebase from "firebase";
+import Vuex from "vuex";
 export default {
-  name: 'loginScreen',
+  name: "loginScreen",
   data() {
     return {
       email: null,
       pass: null
-    }
+    };
   },
   methods: {
     login() {
-      firebase.auth().signInWithEmailAndPassword(this.email, this.pass).then(
-        user => {
-          this.$store.state.authorized = true
-          this.$router.push('/')
-        },
-        err => {
-          Materialize.toast(err.message, 2000)
-        }
-      )
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.pass)
+        .then(
+          user => {
+            this.$store.state.authorized = true;
+            this.$router.push("/");
+          },
+          err => {
+            Materialize.toast(err.message, 2000);
+          }
+        );
     }
   }
-}
+};
 </script>

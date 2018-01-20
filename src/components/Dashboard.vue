@@ -28,27 +28,30 @@
 </template>
 
 <script>
-  import db from './firebaseInit'
-  import firebase from 'firebase'
-  export default {
-    name: 'dashboard',
-    data() {
-      return {
-        projects: []
-      }
-    },
-    created() {
-      db.collection('projects').get().then(querySnapshot => {
+import db from "./firebaseInit";
+import firebase from "firebase";
+export default {
+  name: "dashboard",
+  data() {
+    return {
+      projects: []
+    };
+  },
+  created() {
+    db
+      .collection("projects")
+      .get()
+      .then(querySnapshot => {
         querySnapshot.forEach(doc => {
           const data = {
-            'id': doc.id,
-            'project_id': doc.data().project_id,
-            'name': doc.data().name,
-            'date': doc.data().date,
-          }
-          this.projects.push(data)
-        })
-      })
-    }
+            id: doc.id,
+            project_id: doc.data().project_id,
+            name: doc.data().name,
+            date: doc.data().date
+          };
+          this.projects.push(data);
+        });
+      });
   }
+};
 </script>

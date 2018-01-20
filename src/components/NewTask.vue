@@ -35,10 +35,10 @@
 </template>
 
 <script>
-import moment from 'moment'
-import db from './firebaseInit'
+import moment from "moment";
+import db from "./firebaseInit";
 export default {
-  name: 'newTask',
+  name: "newTask",
   data() {
     return {
       name: null,
@@ -48,18 +48,21 @@ export default {
       task_id: null,
       date: null,
       project_id: this.$route.params.project_id
-    }
+    };
   },
   methods: {
     createTask() {
-      db.collection('Tasks').add({
-        name: this.name,
-        desc: this.desc,
-        priority: this.priority,
-        status: "to-do",
-        project_id: this.$route.params.project_id
-      }).then(docRef => this.$router.push('/' + this.$route.params.project_id))
+      db
+        .collection("Tasks")
+        .add({
+          name: this.name,
+          desc: this.desc,
+          priority: this.priority,
+          status: "to-do",
+          project_id: this.$route.params.project_id
+        })
+        .then(docRef => this.$router.push("/" + this.$route.params.project_id));
     }
   }
-}
+};
 </script>

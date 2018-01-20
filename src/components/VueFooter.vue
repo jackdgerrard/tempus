@@ -29,6 +29,6 @@ Rokas Mikalauskas</a><br/> and <a href="http://jackdgerrard.github.io">Jack Gerr
 
 <script>
 export default {
-  name: 'VueFooter'
-}
+  name: "VueFooter"
+};
 </script>

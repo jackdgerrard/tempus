@@ -5,4 +5,4 @@ export default {
   projectId: "tempusvuejs",
   storageBucket: "tempusvuejs.appspot.com",
   messagingSenderId: "527943828063"
-}
+};

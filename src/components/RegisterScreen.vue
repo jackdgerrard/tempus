@@ -21,26 +21,29 @@
 </div>
 </template>
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 export default {
-  name: 'registerScreen',
+  name: "registerScreen",
   data() {
     return {
       email: null,
       pass: null
-    }
+    };
   },
   methods: {
     register() {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.pass).then(
-        user => {
-          this.$router.push('/')
-        },
-        err => {
-          Materialize.toast(err.message, 2000)
-        }
-      )
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.pass)
+        .then(
+          user => {
+            this.$router.push("/");
+          },
+          err => {
+            Materialize.toast(err.message, 2000);
+          }
+        );
     }
   }
-}
+};
 </script>
