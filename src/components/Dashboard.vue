@@ -1,12 +1,17 @@
 <template>
   <div id="dashboard">
     <ul class="collection with-header">
+
       <li class="collection-header">
-        <h5>Projects</h5>
+        <h5>Your Projects</h5>
       </li>
+
       <li v-for="project in projects" v-bind:key="project.id" class="collection-item">
+
         <div class="chip">#{{project.project_id}}</div>
+        
         {{project.name}}
+
         <router-link class="secondary-content" v-bind:to="{name: 'projecttasks', params: {project_id: project.project_id}}">
 
           <!--task status
