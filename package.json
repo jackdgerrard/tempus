@@ -10,7 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "firebase": "^4.8.2",
+    "firebase": "^4.9.0",
     "moment": "^2.20.1",
     "prettier": "^1.10.2",
     "style-loader": "^0.19.1",

@@ -13,13 +13,13 @@
         </div>
       </div>
       <div class="row">
-        
+
         <label for="slider">Priority</label>
 
         <div class="input-field col s12">
           <input id="slider" type="range" min="1" max="5" step="1" v-model="priority" required />
 
-          
+
         </div>
       </div>
       <div class="row">
@@ -41,6 +41,7 @@ export default {
   name: "newTask",
   data() {
     return {
+      task_id: null,
       name: null,
       desc: null,
       priority: 0,
@@ -59,7 +60,9 @@ export default {
           desc: this.desc,
           priority: this.priority,
           status: "to-do",
-          project_id: this.$route.params.project_id
+          date: moment().unix(),
+          project_id: this.$route.params.project_id,
+          task_id: (this.$route.params.project_id) + Math.floor(Math.random() * 1000 + 1)
         })
         .then(docRef => this.$router.push("/" + this.$route.params.project_id));
     }
