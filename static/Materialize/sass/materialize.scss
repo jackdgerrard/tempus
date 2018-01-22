@@ -70,7 +70,7 @@ footer{
   }
 
 #loginScreen {
-  padding-top: 35vh;
+  padding:2vw;
   background: #f3904f; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to left,
@@ -83,7 +83,7 @@ footer{
     #f3904f
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  height: 100vh;
+  height: 100%;
   width: 80vw;
   margin: 4vh auto 0 auto;
 
