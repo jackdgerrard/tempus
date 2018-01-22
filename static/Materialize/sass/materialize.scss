@@ -41,6 +41,31 @@
 @import "components/date_picker/default.date";
 @import "components/date_picker/default.time";
 
+<<<<<<< HEAD
+
+footer{
+    margin-top: 50vh;
+}
+
+
+.completed {
+    background-color: #ff5722;
+    height: 50px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    width:100%;
+    margin-left:-20px;
+  }
+  
+  #allTasks {
+    color:#ff5722;
+  }
+  
+  .chip{
+    color: #ff5722;
+  }
+=======
 #loginScreen {
   padding-top: 35vh;
   background: #f3904f; /* fallback for old browsers */
@@ -65,3 +90,4 @@
     color: white;
   }
 }
+>>>>>>> master

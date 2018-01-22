@@ -24,25 +24,28 @@
 
 
 <script>
-import moment from 'moment'
-import db from './firebaseInit'
+import moment from "moment";
+import db from "./firebaseInit";
 export default {
-  name: 'newproject',
+  name: "newproject",
   data() {
     return {
       project_id: null,
       name: null,
       date: null
-    }
+    };
   },
   methods: {
     createProject() {
-      db.collection('projects').add({
-        project_id: this.project_id,
-        name: this.name,
-        date: moment().unix()
-      }).then(docRef => this.$router.push('/'))
+      db
+        .collection("projects")
+        .add({
+          project_id: this.project_id,
+          name: this.name,
+          date: moment().unix()
+        })
+        .then(docRef => this.$router.push("/"));
     }
   }
-}
+};
 </script>

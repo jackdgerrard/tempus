@@ -8,20 +8,18 @@
     <form @submit.prevent="createTask" class="col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="task_id" required>
-          <label>Task ID#</label>
+          <input type="text" v-model="name" required/>
+          <label>Task</label>
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <input type="text" v-model="name" required>
-          <label>Task Name</label>
-        </div>
-      </div>
-      <div class="row">
+
         <label for="slider">Priority</label>
+
         <div class="input-field col s12">
-          <input id="slider" type="range" min="1" max="5" step="1" v-model="priority" />
+          <input id="slider" type="range" min="1" max="5" step="1" v-model="priority" required />
+
+
         </div>
       </div>
       <div class="row">
@@ -35,13 +33,15 @@
   </div>
 </div>
 </template>
+
 <script>
-import moment from 'moment'
-import db from './firebaseInit'
+import moment from "moment";
+import db from "./firebaseInit";
 export default {
-  name: 'newTask',
+  name: "newTask",
   data() {
     return {
+      task_id: null,
       name: null,
       desc: null,
       priority: 0,
@@ -49,20 +49,23 @@ export default {
       task_id: null,
       date: null,
       project_id: this.$route.params.project_id
-    }
+    };
   },
   methods: {
     createTask() {
-      db.collection('Tasks').add({
-        name: this.name,
-        desc: this.desc,
-        priority: this.priority,
-        status: "idle",
-        task_id: this.task_id,
-        date: moment().unix(),
-        project_id: this.$route.params.project_id
-      }).then(docRef => this.$router.push('/' + this.$route.params.project_id))
+      db
+        .collection("Tasks")
+        .add({
+          name: this.name,
+          desc: this.desc,
+          priority: this.priority,
+          status: "to-do",
+          date: moment().unix(),
+          project_id: this.$route.params.project_id,
+          task_id: (this.$route.params.project_id) + Math.floor(Math.random() * 1000 + 1)
+        })
+        .then(docRef => this.$router.push("/" + this.$route.params.project_id));
     }
   }
-}
+};
 </script>

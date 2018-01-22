@@ -16,18 +16,21 @@
 </template>
 
 <script>
-import db from './firebaseInit'
-import firebase from 'firebase'
-import Vuex from 'vuex'
+import db from "./firebaseInit";
+import firebase from "firebase";
+import Vuex from "vuex";
 export default {
-  name: 'navbar',
+  name: "navbar",
   methods: {
     logout: function() {
-      firebase.auth().signOut().then(() => {
-        this.$store.state.authorized = false
-        this.$router.replace('login')
-      })
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$store.state.authorized = false;
+          this.$router.replace("login");
+        });
     }
   }
-}
+};
 </script>
