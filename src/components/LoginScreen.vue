@@ -1,26 +1,33 @@
 <template>
 <div id="loginScreen" class="z-depth-4">
-  <p>Login: rokas.mikalauskas95@gmail.com </br> Password: root123 </br>
-  </p>
+
   <div class="container">
+
     <h2> Log in </h2>
+
     <form @submit.prevent="login" class="col s12">
+
       <div class="row">
         <div class="input-field col s12">
           <input type="email" v-model="email" required>
           <label>Email</label>
         </div>
       </div>
+
       <div class="row">
         <div class="input-field col s12">
           <input type="password" v-model="pass" required>
           <label>Password</label>
         </div>
       </div>
+
       <button type="submit" class="btn">Login</button>
+
       <router-link to="/register" class="btn"> Register </router-link>
+
     </form>
   </div>
+
 </div>
 </template>
 <script>

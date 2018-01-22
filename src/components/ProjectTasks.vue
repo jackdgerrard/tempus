@@ -22,14 +22,10 @@ import NewTask from 'NewTask.vue'
       </div>
 
       {{task.name}}
-
-      <a @click="changeValue(task.task_id, task.status)" :style="{ cursor: 'pointer'}">
-      <span v-if="task.status == 'to-do'" class="new badge blue" data-badge-caption="">{{task.status}}</span>
+      <a @click="changeValue(task.task_id, task.status)" :style="{ cursor: 'pointer'}"><span v-if="task.status == 'to-do'" class="new badge blue" data-badge-caption="">{{task.status}}</span>
       <span v-if="task.status == 'in progress'" class="new badge green" data-badge-caption="">{{task.status}}</span>
       <span v-if="task.status == 'completed'" class="new badge red" data-badge-caption="">{{task.status}}</span></a>
-
-
-      <router-link class="secondary-content" v-bind:to="{name: 'viewtask', params: {task_id: task.task_id}}">
+      <router-link class="secondary-content" :to="{name: 'viewtask', params: {task_id: task.task_id}}">
         <i class="material-icons">arrow_forward</i>
       </router-link>
 
@@ -49,7 +45,11 @@ import NewTask from 'NewTask.vue'
       </figure>
       {{completedTasks}} / {{allTasks}}
     </div>
-
+    <div>
+      <h4 class="center-align">
+        {{completedTasks}} / {{allTasks}} Tasks Completed
+    </h4>
+    </div>
   </div>
 
   <button @click="deleteProject" class="btn red">Delete Project</button>
@@ -93,7 +93,7 @@ export default {
             task_id: doc.data().task_id
           };
           this.tasks.push(data);
-          if (data.status == "closed") {
+          if (data.status == "completed") {
             this.completedTasks++;
           }
         });
@@ -143,6 +143,7 @@ export default {
         }
       }
 
+
       db.collection('Tasks').where('task_id', '==', taskid).get().then(querySnapshot => {
         querySnapshot.forEach(doc => {
           if (taskstatus == 'to-do') {
@@ -170,5 +171,4 @@ export default {
 }
 </script>
 <style scoped>
-/* moved to sass*/
 </style>

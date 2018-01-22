@@ -20,12 +20,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" v-model="priority" >
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input type="text" v-model="status" >
+          <input id="slider" type="range" min="1" max="5" step="1" v-model="priority" />
         </div>
       </div>
       <div class="row">

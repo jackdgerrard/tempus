@@ -41,6 +41,7 @@
 @import "components/date_picker/default.date";
 @import "components/date_picker/default.time";
 
+<<<<<<< HEAD
 
 footer{
     margin-top: 50vh;
@@ -64,3 +65,29 @@ footer{
   .chip{
     color: #ff5722;
   }
+=======
+#loginScreen {
+  padding-top: 35vh;
+  background: #f3904f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #3b4371,
+    #f3904f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #3b4371,
+    #f3904f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  height: 100vh;
+  width: 100vw;
+
+  h2,
+  label
+    {
+    text-align: center;
+    color: white;
+  }
+}
+>>>>>>> master
